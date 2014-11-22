@@ -1,0 +1,24 @@
+plugins {
+  id "us.kirchmeier.capsule" version "0.9.0"
+}
+
+apply plugin: 'java'
+
+def karyonVersion = "2.1.00-RC6"
+
+dependencies {
+  compile project(':experiment-service-shared')
+  
+  compile "com.netflix.karyon:karyon-core:${karyonVersion}"
+  compile "com.netflix.karyon:karyon-jersey-blocking:${karyonVersion}"
+  compile "com.netflix.karyon:karyon-admin-web:${karyonVersion}"
+  compile "com.netflix.karyon:karyon-servo:${karyonVersion}"
+  compile "com.netflix.karyon:karyon-archaius:${karyonVersion}"
+  compile "com.netflix.karyon:karyon-eureka:${karyonVersion}"
+}
+
+task fatCapsule(type: FatCapsule) {
+  applicationClass 'example.service1.Service1App'
+}
+
+assemble.dependsOn fatCapsule 

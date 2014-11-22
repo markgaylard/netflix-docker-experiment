@@ -1,0 +1,11 @@
+eureka:
+  image: netflixoss/eureka:1.1.142
+  ports:
+  - "8080:8080"
+s1:
+  build: ../experiment-service1/
+  ports:
+    - "8077:8077"
+    - "8081:8081"
+  links:
+   - eureka

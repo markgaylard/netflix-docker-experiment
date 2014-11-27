@@ -1,0 +1,13 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'com.netflix.ribbon:ribbon:2.0-RC13'
+  compile 'com.netflix.ribbon:ribbon-eureka:2.0-RC13'
+  
+  runtime 'org.slf4j:slf4j-simple:1.7.7'
+}

@@ -12,7 +12,6 @@ import com.netflix.karyon.jersey.blocking.KaryonJerseyModule;
 import com.netflix.karyon.servo.KaryonServoModule;
 
 import example.service1.Service1App.KaryonJerseyModuleImpl;
-import example.shared.auth.AuthInterceptor;
 import example.shared.auth.AuthenticationService;
 import example.shared.auth.DefaultAuthenticationService;
 import example.shared.logging.LoggingInterceptor;
@@ -35,7 +34,7 @@ public interface Service1App
         {
             bind(AuthenticationService.class).to(DefaultAuthenticationService.class);
             interceptorSupport().forUri("/*").intercept(LoggingInterceptor.class);
-            interceptorSupport().forUri("/hello").interceptIn(AuthInterceptor.class);
+//            interceptorSupport().forUri("/*").interceptIn(AuthInterceptor.class);
             server().port(8081).threadPoolSize(100);
         }
     }
@@ -44,6 +43,7 @@ public interface Service1App
     {
         try
         {
+            System.setProperty("archaius.deployment.environment", "dev");
             Karyon.forApplication(Service1App.class, (LifecycleInjectorBuilderSuite[]) null).startAndWaitTillShutdown();
         }
         catch (Exception e)

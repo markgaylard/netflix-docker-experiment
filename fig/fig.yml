@@ -3,7 +3,7 @@ eureka:
   ports:
   - "8080:8080"
 s1:
-  build: ../experiment-service1/
+  build: ../experiment-service1/experiment-service1-server/
   ports:
     - "8077:8077"
     - "8081:8081"

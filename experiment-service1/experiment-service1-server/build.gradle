@@ -3,8 +3,11 @@ plugins {
 }
 
 apply plugin: 'java'
+apply plugin: 'eclipse'
 
-def karyonVersion = "2.1.00-RC6"
+repositories {
+  mavenCentral()
+}
 
 dependencies {
   compile project(':experiment-service-shared')
@@ -17,8 +20,10 @@ dependencies {
   compile "com.netflix.karyon:karyon-eureka:${karyonVersion}"
 }
 
-task fatCapsule(type: FatCapsule) {
+task serverCapsule(type: FatCapsule) {
   applicationClass 'example.service1.Service1App'
+  
+  capsuleManifest.systemProperties = ['java.awt.headless': true]
 }
 
-assemble.dependsOn fatCapsule 
+assemble.dependsOn serverCapsule 

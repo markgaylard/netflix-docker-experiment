@@ -1,1 +1,1 @@
-include 'experiment-service1','experiment-service-shared'
+include 'experiment-service1:experiment-service1-server','experiment-service-shared'

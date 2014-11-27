@@ -1,14 +1,12 @@
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'eclipse'
 
     repositories {
        mavenCentral()
     }
 
     version = '1.0'
-
-    jar {
-        manifest.attributes provider: 'gradle'
+    
+    ext {
+        karyonVersion = "2.1.00-RC6"
     }
 }

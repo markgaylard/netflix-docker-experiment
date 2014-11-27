@@ -1,6 +1,11 @@
 apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+  mavenCentral()
+}
 
 dependencies {
-  compile 'com.netflix.karyon:karyon-core:2.1.00-RC6'
+  compile "com.netflix.karyon:karyon-core:${karyonVersion}"
   compile 'javax.inject:javax.inject:1'
 }

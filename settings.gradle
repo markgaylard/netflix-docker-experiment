@@ -1,1 +1,5 @@
-include 'experiment-service1:experiment-service1-server','experiment-service-shared'
+include 'experiment-service-shared'
+include 'experiment-testapp'
+include 'experiment-service1:experiment-service1-server'
+include 'experiment-service1:experiment-service1-client'
+include 'experiment-service1:experiment-service1-api'

@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
   compile project(':experiment-service-shared')
+  compile project(':experiment-service1:experiment-service1-api')
   
   compile "com.netflix.karyon:karyon-core:${karyonVersion}"
   compile "com.netflix.karyon:karyon-jersey-blocking:${karyonVersion}"

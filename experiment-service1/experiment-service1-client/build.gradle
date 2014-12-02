@@ -6,8 +6,11 @@ repositories {
 }
 
 dependencies {
+  compile project(':experiment-service1:experiment-service1-api')
+
   compile 'com.netflix.ribbon:ribbon:2.0-RC13'
   compile 'com.netflix.ribbon:ribbon-eureka:2.0-RC13'
+  compile 'javax.inject:javax.inject:1'
   
   runtime 'org.slf4j:slf4j-simple:1.7.7'
 }

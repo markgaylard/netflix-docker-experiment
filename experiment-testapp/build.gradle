@@ -1,0 +1,17 @@
+apply plugin: 'war'
+apply plugin: 'eclipse'
+apply plugin: 'jetty'
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile project(':experiment-service1:experiment-service1-api')
+  compile project(':experiment-service1:experiment-service1-client')
+  compile 'org.springframework:spring-webmvc:4.1.2.RELEASE'
+  compile 'org.freemarker:freemarker:2.3.19'
+  
+  runtime 'org.springframework:spring-context-support:4.1.2.RELEASE'
+  runtime 'org.slf4j:slf4j-simple:1.7.7'
+}

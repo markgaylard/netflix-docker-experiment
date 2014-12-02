@@ -9,4 +9,15 @@ subprojects {
     ext {
         karyonVersion = "2.1.00-RC6"
     }
+    apply plugin: 'java'
+}
+
+task figBuild(type:Exec, dependsOn: subprojects.assemble) {
+  executable 'fig'
+  args 'build'
+}
+
+task figRun(type: Exec, dependsOn: figBuild) {
+  executable 'fig'
+  args 'start' 
 }

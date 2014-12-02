@@ -73,4 +73,20 @@ public class HelloWorldResource
             return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
         }
     }
+    
+    @Path("object/{id}")
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response topLevelObject(@PathParam("id") String id)
+    {
+        try
+        {
+            return Response.ok(mapper.writeValueAsString(new TopLevelDomainObject(id, 123))).build();
+        }
+        catch (Exception e)
+        {
+            logger.error("Error creating json response.", e);
+            return Response.status(Response.Status.INTERNAL_SERVER_ERROR).build();
+        }
+    }
 }

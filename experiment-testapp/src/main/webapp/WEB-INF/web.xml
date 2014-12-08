@@ -21,7 +21,19 @@
         <filter-name>encodingFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
+    
+    <servlet>
+        <description></description>
+        <display-name>HystrixMetricsStreamServlet</display-name>
+        <servlet-name>HystrixMetricsStreamServlet</servlet-name>
+        <servlet-class>com.netflix.hystrix.contrib.metrics.eventstream.HystrixMetricsStreamServlet</servlet-class>
+    </servlet>
 
+    <servlet-mapping>
+        <servlet-name>HystrixMetricsStreamServlet</servlet-name>
+        <url-pattern>/hystrix.stream</url-pattern>
+    </servlet-mapping>
+    
     <servlet>
         <servlet-name>testapp</servlet-name>
         <servlet-class>
@@ -34,5 +46,6 @@
         <servlet-name>testapp</servlet-name>
         <url-pattern>/*</url-pattern>
     </servlet-mapping>
+
 
 </web-app>

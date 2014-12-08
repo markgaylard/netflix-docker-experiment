@@ -27,14 +27,14 @@ public class LoggingInterceptor implements DuplexInterceptor<HttpServerRequest<B
     @Override
     public Observable<Void> in(HttpServerRequest<ByteBuf> request, HttpServerResponse<ByteBuf> response)
     {
-        logger.info("Logging interceptor with id {} invoked for direction IN.", id);
+        logger.debug("Logging interceptor with id {} invoked for direction IN.", id);
         return Observable.empty();
     }
 
     @Override
     public Observable<Void> out(HttpServerResponse<ByteBuf> response)
     {
-        logger.info("Logging interceptor with id {} invoked for direction OUT.", id);
+        logger.debug("Logging interceptor with id {} invoked for direction OUT.", id);
         return Observable.empty();
     }
 }

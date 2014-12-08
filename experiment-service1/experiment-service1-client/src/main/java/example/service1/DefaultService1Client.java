@@ -71,7 +71,6 @@ public class DefaultService1Client implements Service1Client
     {
         RibbonRequest<ByteBuf> ribbonRequest = getObjectTemplate.requestBuilder().withRequestProperty("identifier", identifier).build();
         String jsonString = ribbonRequest.execute().toString(Charset.defaultCharset());
-        System.err.println(jsonString);
         try
         {
             return mapper.readValue(jsonString, TopLevelDomainObject.class);

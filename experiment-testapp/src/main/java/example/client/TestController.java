@@ -50,4 +50,10 @@ public class TestController
         
         return model;
     }
+
+    @RequestMapping(value = "/healthcheck", method = RequestMethod.GET)
+    public void healthcheck()
+    {
+        System.err.println("HEALTHCHECK");
+    }
 }

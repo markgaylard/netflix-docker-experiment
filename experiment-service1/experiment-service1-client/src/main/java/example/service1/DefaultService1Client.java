@@ -36,13 +36,15 @@ public class DefaultService1Client implements Service1Client
         {
         }
 
-
         ClientOptions clientOptions = ClientOptions.create()
             .withMaxAutoRetriesNextServer(1)
             .withDiscoveryServiceIdentifier("service1.mydomain.net");
 
         HttpResourceGroup httpResourceGroup = Ribbon.createHttpResourceGroup("helloClient", clientOptions);
-        DiscoveryManager.getInstance().initComponent(new CloudInstanceConfig(), new DefaultEurekaClientConfig());
+        if ("cloud".equals(ConfigurationManager.getDeploymentContext().getDeploymentDatacenter()))
+        {
+            DiscoveryManager.getInstance().initComponent(new CloudInstanceConfig(), new DefaultEurekaClientConfig());
+        }
 
         helloToTemplate = httpResourceGroup.newTemplateBuilder("helloTo", ByteBuf.class)
             .withMethod("GET")

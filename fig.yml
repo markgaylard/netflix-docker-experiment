@@ -8,8 +8,8 @@ hystrixdashboard:
   - "9080:8080"
 s1:
   build: experiment-service1/experiment-service1-server/
-#  ports:
-#    - "8081:8081"
+  ports:
+    - ":8081"
   links:
    - eureka
 testapp:

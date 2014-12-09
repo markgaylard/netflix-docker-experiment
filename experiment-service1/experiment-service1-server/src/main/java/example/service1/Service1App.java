@@ -43,7 +43,6 @@ public interface Service1App
     {
         try
         {
-            System.setProperty("archaius.deployment.environment", "dev");
             Karyon.forApplication(Service1App.class, (LifecycleInjectorBuilderSuite[]) null).startAndWaitTillShutdown();
         }
         catch (Exception e)

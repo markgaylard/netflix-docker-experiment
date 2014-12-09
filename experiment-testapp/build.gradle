@@ -18,3 +18,4 @@ dependencies {
 }
 
 jettyRun.contextPath = '/'
+jettyRun.doFirst { System.setProperty('archaius.deployment.environment', 'dev') }

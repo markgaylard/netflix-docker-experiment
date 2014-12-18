@@ -1,24 +1,39 @@
+
+buildscript {
+    repositories {
+        maven { url "https://repo.spring.io/libs-release" }
+        mavenLocal()
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.1.10.RELEASE")
+    }
+}
+
 plugins {
   id "us.kirchmeier.capsule" version "0.9.0"
 }
 
 apply plugin: 'java'
 apply plugin: 'eclipse'
+apply plugin: 'spring-boot'
 
 repositories {
   mavenCentral()
+  maven { url "https://repo.spring.io/libs-release" }
+}
+configurations {
+    compile.exclude module: "spring-boot-starter-tomcat"
+    compile.exclude module: "spring-boot-starter-logging"
 }
 
 dependencies {
-  compile project(':experiment-service-shared')
+  compile "org.springframework.boot:spring-boot-starter-web:1.2.0.RELEASE"
+  compile "org.springframework.boot:spring-boot-starter-jetty:1.2.0.RELEASE"
+  compile "org.springframework.boot:spring-boot-starter-log4j2:1.2.0.RELEASE"
+
   compile project(':experiment-service1:experiment-service1-api')
-  
-  compile "com.netflix.karyon:karyon-core:${karyonVersion}"
-  compile "com.netflix.karyon:karyon-jersey-blocking:${karyonVersion}"
-  compile "com.netflix.karyon:karyon-admin-web:${karyonVersion}"
-  compile "com.netflix.karyon:karyon-servo:${karyonVersion}"
-  compile "com.netflix.karyon:karyon-archaius:${karyonVersion}"
-  compile "com.netflix.karyon:karyon-eureka:${karyonVersion}"
+  compile "com.netflix.archaius:archaius-core:0.6.3"
 }
 
 task serverCapsule(type: FatCapsule) {
@@ -27,4 +42,9 @@ task serverCapsule(type: FatCapsule) {
   capsuleManifest.systemProperties = ['java.awt.headless': true]
 }
 
-assemble.dependsOn serverCapsule 
+//assemble.dependsOn serverCapsule 
+
+dependencies {
+    
+    testCompile("junit:junit")
+}
